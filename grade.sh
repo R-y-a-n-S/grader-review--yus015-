@@ -25,7 +25,10 @@ fi
 
 echo "compilation success"
 
-java -cp ".;lib/junit-4.13.2.jar;lib/hamcrest-core-1.3.jar" org.junit.runner.JUnitCore TestListExamples
-
+testResult=$(java -cp ".;lib/junit-4.13.2.jar;lib/hamcrest-core-1.3.jar" org.junit.runner.JUnitCore TestListExamples | grep "OK")
+if [[ -z "$testResult" ]]
+then 
+    echo "test failed"
+fi
 
 
